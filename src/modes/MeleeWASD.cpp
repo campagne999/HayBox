@@ -56,7 +56,7 @@ void MeleeWASD::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         inputs.left,
         inputs.right,
         inputs.down,
-        inputs.up,
+        inputs.up2,
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,
