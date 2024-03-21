@@ -11,6 +11,7 @@ FgcMode::FgcMode(socd::SocdType horizontal_socd, socd::SocdType vertical_socd) {
         socd::SocdPair{ &InputState::mod_x, &InputState::c_up,  socd::SOCD_DIR1_PRIORITY},
         socd::SocdPair{ &InputState::down,  &InputState::mod_x, vertical_socd           },
         socd::SocdPair{ &InputState::down,  &InputState::c_up,  vertical_socd           },
+        socd::SocdPair{ &InputState::down,  &InputState::up2,  vertical_socd           },
     };
 }
 
@@ -19,7 +20,7 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.dpadLeft = inputs.left;
     outputs.dpadRight = inputs.right;
     outputs.dpadDown = inputs.down;
-    outputs.dpadUp = inputs.mod_x || inputs.c_up;
+    outputs.dpadUp = inputs.mod_x || inputs.c_up || inputs.up2;
 
     // Menu keys
     outputs.start = inputs.start;

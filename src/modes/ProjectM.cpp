@@ -60,11 +60,12 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
 }
 
 void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
+    inputs.up_pressed = inputs.up || inputs.up2;
     UpdateDirections(
         inputs.left,
         inputs.right,
         inputs.down,
-        inputs.up,
+        inputs.up_pressed,
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,

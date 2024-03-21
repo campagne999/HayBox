@@ -9,6 +9,7 @@ void DefaultKeyboardMode::UpdateKeys(InputState &inputs) {
     Press(HID_KEY_A, inputs.l);
     Press(HID_KEY_B, inputs.left);
     Press(HID_KEY_C, inputs.down);
+    Press(HID_KEY_Z, inputs.up2);
     Press(HID_KEY_D, inputs.right);
     Press(HID_KEY_E, inputs.mod_x);
     Press(HID_KEY_F, inputs.mod_y);

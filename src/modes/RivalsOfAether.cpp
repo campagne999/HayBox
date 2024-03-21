@@ -47,11 +47,12 @@ void RivalsOfAether::UpdateDigitalOutputs(InputState &inputs, OutputState &outpu
 
 void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     // Coordinate calculations to make modifier handling simpler.
+    inputs.up_pressed = inputs.up || inputs.up2;
     UpdateDirections(
         inputs.left,
         inputs.right,
         inputs.down,
-        inputs.up,
+        inputs.up_pressed,
         inputs.c_left,
         inputs.c_right,
         inputs.c_down,
