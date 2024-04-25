@@ -56,8 +56,34 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     );
 
     bool shield_button_pressed = inputs.l || inputs.r;
+    
+    if (inputs.midshield) {
+        if (inputs.c_down) {
+            outputs.rightStickX = 192;
+            outputs.rightStickY = 40;
+        } else if (inputs.c_up) {
+            outputs.rightStickX = 64;
+            outputs.rightStickY = 216;
+        } else if (inputs.c_left) {
+            outputs.rightStickX = 64;
+            outputs.rightStickY = 40;
+        } else if (inputs.c_right) {
+            outputs.rightStickX = 192;
+            outputs.rightStickY = 216;
+    }
+}
+
+    if (inputs.lightshield) {
+        outputs.leftStickX = -1 * outputs.leftStickX;
+}
+
+    
 
     if (inputs.mod_x) {
+         // Mirror modifier
+        if (inputs.lightshield) {
+            (outputs.leftStickX) = -1 * (outputs.leftStickX);
+            }
         // MX + Horizontal = 6625 = 53
         if (directions.horizontal) {
             outputs.leftStickX = 128 + (directions.x * 53);
@@ -165,9 +191,12 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
                 outputs.leftStickX = 128 + (directions.x * 36);
             }
         }
+            if (inputs.lightshield) {
+        (outputs.leftStickX) = -1 * (outputs.leftStickX);
+        }       
         // MY + Vertical (even if shield is held) = 53
         if (directions.vertical) {
-            outputs.leftStickY = 128 + (directions.y * 53);
+            outputs.leftStickY = 128 + (directions.y * 40);
             // MY Vertical Tilts
             if (inputs.a) {
                 outputs.leftStickY = 128 + (directions.y * 36);
@@ -176,7 +205,7 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         if (directions.diagonal) {
             // MY + q1/2/3/4 = 35 59
             outputs.leftStickX = 128 + (directions.x * 35);
-            outputs.leftStickY = 128 + (directions.y * 53);
+            outputs.leftStickY = 128 + (directions.y * 28);
             if (shield_button_pressed) {
                 // MY + L, R, LS, and MS + q1/2 = 38 70
                 outputs.leftStickX = 128 + (directions.x * 38);
@@ -277,4 +306,5 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         outputs.leftStickX = inputs.nunchuk_x;
         outputs.leftStickY = inputs.nunchuk_y;
     }
+}
 }
