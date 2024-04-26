@@ -78,6 +78,10 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
 
     bool shield_button_pressed = inputs.l || inputs.lightshield;
 
+    if (inputs.lightshield) {
+        outputs.leftStickX = -1 * outputs.leftStickX;
+    }
+
     if (directions.diagonal) {
         if (directions.y == 1) {
             outputs.leftStickX = 128 + (directions.x * 83);
