@@ -44,10 +44,13 @@ void select_mode(CommunicationBackend *backend) {
             } else if (inputs.up2) {
                 set_mode(backend, new MeleeWASD(socd::SOCD_2IP_NO_REAC));
 
+            } else if (inputs.right) {
+                set_mode(backend, new Kazuya(socd::SOCD_2IP));
+
             } else if (inputs.down) {
                 set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
 
-            } else if (inputs.down) {
+            } else if (inputs.y) {
                 set_mode(backend, new ProjectM(socd::SOCD_2IP, {.true_z_press = false, .ledgedash_max_jump_traj = true}));
 
             } else if (inputs.x) {
