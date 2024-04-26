@@ -1,4 +1,4 @@
-/* Ultimate profile by Taker */
+/* Ultimate profile by campagne */
 #include "modes/Ultimate.hpp"
 
 #define ANALOG_STICK_MIN 28
@@ -72,17 +72,9 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     }
 }
 
-    if (inputs.lightshield) {
-        outputs.leftStickX = -1 * outputs.leftStickX;
-}
-
     
 
     if (inputs.mod_x) {
-         // Mirror modifier
-        if (inputs.lightshield) {
-            (outputs.leftStickX) = -1 * (outputs.leftStickX);
-            }
         // MX + Horizontal = 6625 = 53
         if (directions.horizontal) {
             outputs.leftStickX = 128 + (directions.x * 53);
@@ -146,37 +138,14 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
                 outputs.leftStickY = 128 + (directions.y * 28);
             }
 
-            /* Extended Up B Angles */
-            if (inputs.b) {
-                // (33.29) = 67 44
-                outputs.leftStickX = 128 + (directions.x * 67);
-                outputs.leftStickY = 128 + (directions.y * 44);
-                // (39.38) = 67 55
-                if (inputs.c_down) {
-                    outputs.leftStickX = 128 + (directions.x * 67);
-                    outputs.leftStickY = 128 + (directions.y * 55);
-                }
-                // (36.18) = 67 49
-                if (inputs.c_left) {
-                    outputs.leftStickX = 128 + (directions.x * 67);
-                    outputs.leftStickY = 128 + (directions.y * 49);
-                }
-                // (30.2) = 67 39
-                if (inputs.c_up) {
-                    outputs.leftStickX = 128 + (directions.x * 67);
-                    outputs.leftStickY = 128 + (directions.y * 39);
-                }
-                // (27.58) = 67 35
-                if (inputs.c_right) {
-                    outputs.leftStickX = 128 + (directions.x * 67);
-                    outputs.leftStickY = 128 + (directions.y * 35);
-                }
-            }
-
             // Angled Ftilts
-            if (inputs.a) {
-                outputs.leftStickX = 128 + (directions.x * 36);
-                outputs.leftStickY = 128 + (directions.y * 26);
+                if (inputs.a) {
+                    outputs.leftStickX = 128 + (directions.x * 36);
+                    outputs.leftStickY = 128 + (directions.y * 26);
+            }
+            // Mirror modifier
+                 if (inputs.lightshield) {
+                     (outputs.leftStickX) = -1 * (outputs.leftStickX);
             }
         }
     }
@@ -190,9 +159,6 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
                 outputs.leftStickX = 128 + (directions.x * 36);
             }
         }
-            if (inputs.lightshield) {
-        (outputs.leftStickX) = -1 * (outputs.leftStickX);
-        }       
         // MY + Vertical (even if shield is held) = 53
         if (directions.vertical) {
             outputs.leftStickY = 128 + (directions.y * 40);
@@ -243,38 +209,14 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
                 outputs.leftStickY = 128 + (directions.y * 53);
             }
 
-            /* Extended Up B Angles */
-            if (inputs.b) {
-                // (56.71) = 44 67
-                outputs.leftStickX = 128 + (directions.x * 44);
-                outputs.leftStickY = 128 + (directions.y * 67);
-                // (50.62) = 55 67
-                if (inputs.c_down) {
-                    outputs.leftStickX = 128 + (directions.x * 55);
-                    outputs.leftStickY = 128 + (directions.y * 67);
-                }
-                // (53.82) = 49 67
-                if (inputs.c_left) {
-                    outputs.leftStickX = 128 + (directions.x * 49);
-                    outputs.leftStickY = 128 + (directions.y * 67);
-                }
-                // (59.8) = 39 67
-                if (inputs.c_up) {
-                    outputs.leftStickX = 128 + (directions.x * 39);
-                    outputs.leftStickY = 128 + (directions.y * 67);
-                }
-                // (62.42) = 35 67
-                if (inputs.c_right) {
-                    outputs.leftStickX = 128 + (directions.x * 35);
-                    outputs.leftStickY = 128 + (directions.y * 67);
-                }
-            }
-
             // MY Pivot Uptilt/Dtilt
             if (inputs.a) {
                 outputs.leftStickX = 128 + (directions.x * 34);
                 outputs.leftStickY = 128 + (directions.y * 38);
             }
+            if (inputs.lightshield) {
+                (outputs.leftStickX) = -1 * (outputs.leftStickX);
+        }       
         }
     }
 
@@ -304,5 +246,8 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     if (inputs.nunchuk_connected) {
         outputs.leftStickX = inputs.nunchuk_x;
         outputs.leftStickY = inputs.nunchuk_y;
+    }
+    if (inputs.lightshield) {
+        outputs.leftStickX = -1 * outputs.leftStickX;
     }
 }
