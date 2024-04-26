@@ -1,4 +1,3 @@
-/* Ultimate profile by campagne */
 #include "modes/Ultimate.hpp"
 
 #define ANALOG_STICK_MIN 28
