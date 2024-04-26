@@ -307,4 +307,3 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         outputs.leftStickY = inputs.nunchuk_y;
     }
 }
-}
