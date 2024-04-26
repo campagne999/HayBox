@@ -65,6 +65,10 @@ void RivalsOfAether::UpdateAnalogOutputs(InputState &inputs, OutputState &output
 
     bool shield_button_pressed = inputs.l || inputs.r;
 
+    if (inputs.lightshield) {
+        outputs.leftStickX = -1 * outputs.leftStickX;
+    }
+
 
     // 48 total DI angles, 24 total Up b angles, 16 total airdodge angles
 
