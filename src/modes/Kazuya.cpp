@@ -56,26 +56,17 @@ void Ultimate::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
 
     bool shield_button_pressed = inputs.l || inputs.r;
     
-    if (inputs.midshield) {
-        if (inputs.c_down) {
-            outputs.rightStickX = 192;
-            outputs.rightStickY = 40;
-        } else if (inputs.c_up) {
-            outputs.rightStickX = 64;
-            outputs.rightStickY = 216;
-        } else if (inputs.c_left) {
-            outputs.rightStickX = 64;
-            outputs.rightStickY = 40;
-        } else if (inputs.c_right) {
-            outputs.rightStickX = 192;
-            outputs.rightStickY = 216;
+// Kazuya Electric setup.
+if (inputs.lightshield) {
+    if (directions.horizontal) {
+        outputs.leftStickX = 128;
+        outputs.leftStickY = 28;
+
+        if (inputs.a) {
+            outputs.leftStickX = 128 + (directions.x * 100);
+        }
     }
 }
-
-    if (inputs.lightshield) {
-        outputs.leftStickX = -1 * outputs.leftStickX;
-}
-
     
 
     if (inputs.mod_x) {
