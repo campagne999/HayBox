@@ -297,4 +297,3 @@ if (inputs.lightshield) {
         outputs.leftStickY = inputs.nunchuk_y;
     }
 }
-}
